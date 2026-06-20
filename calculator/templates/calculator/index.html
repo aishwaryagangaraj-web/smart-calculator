@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCalc Pro</title>
+    <link rel="stylesheet" href="{% static 'calculator/style.css' %}">
+</head>
+<body>
+
+<section class="hero">
+    <h1>SmartCalc Pro</h1>
+    <p>Choose a calculator to begin your calculation</p>
+</section>
+
+<main class="container">
+
+    <section class="selector-card">
+        <h2>Select Calculator</h2>
+
+        <div class="option-grid">
+            <button onclick="showCalculator('basic')" class="option-btn" id="basicBtn">
+                <span>🧮</span>
+                <strong>Basic Calculator</strong>
+                <small>+ − × ÷</small>
+            </button>
+
+            <button onclick="showCalculator('scientific')" class="option-btn" id="scientificBtn">
+                <span>📐</span>
+                <strong>Scientific Calculator</strong>
+                <small>sqrt, sin, cos, log</small>
+            </button>
+
+            <button onclick="showCalculator('bmi')" class="option-btn" id="bmiBtn">
+                <span>⚕️</span>
+                <strong>BMI Calculator</strong>
+                <small>Health index</small>
+            </button>
+
+            <button onclick="showCalculator('emi')" class="option-btn" id="emiBtn">
+                <span>🏦</span>
+                <strong>Loan EMI Calculator</strong>
+                <small>Monthly payment</small>
+            </button>
+
+            <button onclick="showCalculator('discount')" class="option-btn" id="discountBtn">
+                <span>🏷️</span>
+                <strong>Discount Calculator</strong>
+                <small>Final price</small>
+            </button>
+
+            <button onclick="showCalculator('age')" class="option-btn" id="ageBtn">
+                <span>🎂</span>
+                <strong>Age Calculator</strong>
+                <small>Date of birth</small>
+            </button>
+
+            <button onclick="showCalculator('interest')" class="option-btn" id="interestBtn">
+                <span>💰</span>
+                <strong>Interest Calculator</strong>
+                <small>Daily / Monthly</small>
+            </button>
+
+            <button onclick="showCalculator('sip')" class="option-btn" id="sipBtn">
+                <span>📈</span>
+                <strong>SIP Calculator</strong>
+                <small>Investment growth</small>
+            </button>
+        </div>
+    </section>
+
+    <section class="welcome-card" id="welcomeCard">
+        <h2>Welcome to SmartCalc Pro</h2>
+        <p>Please select any calculator above to start.</p>
+    </section>
+
+    <section class="calculator-section" id="basicSection">
+        <div class="calculator-card basic-card">
+            <h2>Basic Calculator</h2>
+            <input type="text" id="expression" placeholder="0" readonly>
+
+            <div class="calculator-buttons">
+                <button onclick="clearExpression()" class="clear">C</button>
+                <button onclick="deleteLast()" class="operator">⌫</button>
+                <button onclick="appendValue('^')" class="operator">^</button>
+                <button onclick="appendValue('/')" class="operator">÷</button>
+
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button onclick="appendValue('*')" class="operator">×</button>
+
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="appendValue('-')" class="operator">−</button>
+
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendValue('+')" class="operator">+</button>
+
+                <button onclick="appendValue('0')" class="zero">0</button>
+                <button onclick="appendValue('.')">.</button>
+                <button onclick="calculateBasic()" class="equals">=</button>
+            </div>
+
+            <div class="result" id="basicResult">Result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="scientificSection">
+        <div class="calculator-card form-card">
+            <h2>Scientific Calculator</h2>
+            <input type="number" id="scientificValue" placeholder="Enter value">
+
+            <select id="operation">
+                <option value="sqrt">Square Root</option>
+                <option value="sin">Sin</option>
+                <option value="cos">Cos</option>
+                <option value="tan">Tan</option>
+                <option value="log">Log Base 10</option>
+            </select>
+
+            <button onclick="calculateScientific()">Calculate</button>
+            <div class="result" id="scientificResult">Result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="bmiSection">
+        <div class="calculator-card form-card">
+            <h2>BMI Calculator</h2>
+            <input type="number" id="weight" placeholder="Weight in KG">
+            <input type="number" id="height" placeholder="Height in CM">
+
+            <button onclick="calculateBMI()">Check BMI</button>
+            <div class="result" id="bmiResult">BMI result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="emiSection">
+        <div class="calculator-card form-card">
+            <h2>Loan EMI Calculator</h2>
+            <input type="number" id="principal" placeholder="Loan Amount">
+            <input type="number" id="rate" placeholder="Annual Interest Rate %">
+            <input type="number" id="months" placeholder="Loan Duration in Months">
+
+            <button onclick="calculateEMI()">Calculate EMI</button>
+            <div class="result" id="emiResult">EMI result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="discountSection">
+        <div class="calculator-card form-card">
+            <h2>Discount Calculator</h2>
+            <input type="number" id="price" placeholder="Original Price">
+            <input type="number" id="discountPercent" placeholder="Discount Percentage">
+
+            <button onclick="calculateDiscount()">Calculate Discount</button>
+            <div class="result" id="discountResult">Discount result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="ageSection">
+        <div class="calculator-card form-card">
+            <h2>Age Calculator</h2>
+            <input type="number" id="birthDay" placeholder="Day">
+            <input type="number" id="birthMonth" placeholder="Month">
+            <input type="number" id="birthYear" placeholder="Year">
+
+            <button onclick="calculateAge()">Calculate Age</button>
+            <div class="result" id="ageResult">Age result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="interestSection">
+        <div class="calculator-card form-card">
+            <h2>Interest Calculator</h2>
+
+            <input type="number" id="interestPrincipal" placeholder="Principal Amount">
+            <input type="number" id="interestRate" placeholder="Annual Interest Rate %">
+            <input type="number" id="interestTime" placeholder="Time Duration">
+
+            <select id="interestTimeType">
+                <option value="days">Days</option>
+                <option value="months">Months</option>
+                <option value="years">Years</option>
+            </select>
+
+            <button onclick="calculateInterest()">Calculate Interest</button>
+            <div class="result" id="interestResult">Interest result will appear here</div>
+        </div>
+    </section>
+
+    <section class="calculator-section" id="sipSection">
+        <div class="calculator-card form-card">
+            <h2>SIP Investment Calculator</h2>
+
+            <input type="number" id="sipAmount" placeholder="Monthly Investment ₹">
+            <input type="number" id="sipRate" placeholder="Expected Annual Return %">
+            <input type="number" id="sipYears" placeholder="Investment Duration in Years">
+
+            <button onclick="calculateSIP()">Calculate SIP</button>
+            <div class="result" id="sipResult">SIP result will appear here</div>
+        </div>
+    </section>
+
+    <section class="history-card">
+        <div class="history-header">
+            <h2>Recent Calculation History</h2>
+            <button class="danger" onclick="clearHistory()">Clear History</button>
+        </div>
+
+        {% for item in history %}
+            <div class="history-item">
+                <span class="tag">{{ item.category }}</span>
+                <span>{{ item.expression }} = {{ item.result }}</span>
+            </div>
+        {% empty %}
+            <p class="empty">No history yet.</p>
+        {% endfor %}
+    </section>
+
+</main>
+
+<script src="{% static 'calculator/script.js' %}"></script>
+</body>
+</html>
