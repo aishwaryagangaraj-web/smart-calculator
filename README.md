@@ -298,11 +298,9 @@ Add screenshots inside a screenshots folder.
 Example:
 
 ```markdown
-![Home Page](screenshots/home.png)
+![Home Page](smart_calculator/calculator/static/calculator/images/Screenshot 2026-06-20 103902.png)
 
-![Scientific Calculator](screenshots/scientific.png)
 
-![BMI Calculator](screenshots/bmi.png)
 ```
 
 ---
@@ -350,7 +348,7 @@ Through this project, I gained practical experience in:
 https://github.com/aishwaryagangaraj-web
 
 🔗 LinkedIn:
-https://www.linkedin.com/in/aishwaryagangaraj
+https://www.linkedin.com/in/aishwarya-gangaraj-b7659328a
 
 ---
 
