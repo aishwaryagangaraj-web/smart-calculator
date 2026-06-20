@@ -290,20 +290,13 @@ ALLOWED_HOSTS=smart-calculator-g5th.onrender.com
 ```
 
 ---
-
 ## 📸 Screenshots
 
-Add screenshots inside a screenshots folder.
+### Home Page
 
-Example:
-
-```markdown
-![Home Page](smart_calculator/calculator/static/calculator/images/Screenshot 2026-06-20 103902.png)
+![SmartCalc Pro Home](calculator/static/calculator/images/Screenshot%202026-06-20%20103902.png)
 
 
-```
-
----
 
 ## 🎯 Learning Outcomes
 
