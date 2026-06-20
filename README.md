@@ -1,112 +1,367 @@
-# SmartCalc Pro
+# 🧮 SmartCalc Pro
 
-SmartCalc Pro is a Django-based web application that brings everyday, scientific, health, loan, and investment calculations into one responsive interface. It stores recent calculation history and evaluates basic arithmetic expressions through a restricted server-side parser.
+SmartCalc Pro is a modern Django-based web application that combines multiple calculators into a single responsive platform. It provides everyday, scientific, health, financial, and investment calculation tools with a clean user interface and calculation history tracking.
 
-## Features
+---
 
-- Basic arithmetic with powers and decimal values
-- Scientific operations: square root, sine, cosine, tangent, and base-10 logarithm
-- BMI and age calculators
-- Loan EMI and discount calculators
-- Simple-interest and SIP investment calculators
-- Recent calculation history with a clear-history action
-- Responsive web interface and production-ready static-file serving
+## 🌐 Live Demo
 
-## Technologies Used
+🔗 https://smart-calculator-g5th.onrender.com
 
-- Python
-- Django 5.2
-- HTML5, CSS3, and JavaScript
-- SQLite for local development
-- Gunicorn as the production WSGI server
-- WhiteNoise for production static files
+---
 
-## Local Setup
+## 📌 Project Overview
 
-Python 3.10 or newer is recommended.
+SmartCalc Pro was developed to provide users with a centralized platform for performing different types of calculations without switching between multiple applications.
 
-```powershell
-git clone https://github.com/YOUR_USERNAME/smart_calculator.git
-cd smart_calculator
-py -m venv venv
-.\venv\Scripts\Activate.ps1
-py -m pip install --upgrade pip
-py -m pip install -r requirements.txt
-Copy-Item .env.example .env
-$env:DEBUG = "True"
-$env:SECRET_KEY = "local-development-secret-key"
-$env:ALLOWED_HOSTS = "localhost,127.0.0.1"
-py manage.py migrate
-py manage.py runserver
+The application supports:
+
+* Basic arithmetic operations
+* Scientific calculations
+* BMI calculations
+* Loan EMI calculations
+* Discount calculations
+* Age calculations
+* Interest calculations
+* SIP investment calculations
+
+The project is built using Django and follows production-ready deployment practices using Gunicorn and WhiteNoise.
+
+---
+
+## ✨ Features
+
+### 🧮 Basic Calculator
+
+* Addition
+* Subtraction
+* Multiplication
+* Division
+* Decimal calculations
+* Power operations
+
+### 📐 Scientific Calculator
+
+* Square Root
+* Logarithm (Base 10)
+* Sine
+* Cosine
+* Tangent
+* Mathematical constants
+
+### ⚕️ BMI Calculator
+
+* Body Mass Index calculation
+* Health category determination
+* Weight analysis
+
+### 🏦 Loan EMI Calculator
+
+* Monthly EMI calculation
+* Loan repayment estimation
+* Financial planning assistance
+
+### 🏷️ Discount Calculator
+
+* Discount amount calculation
+* Final payable amount
+* Savings estimation
+
+### 🎂 Age Calculator
+
+* Exact age calculation
+* Years, months, and days breakdown
+
+### 💰 Interest Calculator
+
+* Simple Interest calculation
+* Investment growth estimation
+
+### 📈 SIP Calculator
+
+* Monthly investment planning
+* Future investment value estimation
+
+### 📝 Calculation History
+
+* Stores recent calculations
+* Quick reference for previous results
+* Clear history functionality
+
+### 📱 Responsive Design
+
+* Mobile-friendly interface
+* Tablet support
+* Desktop optimized layout
+
+---
+
+## 🚀 Project Highlights
+
+* Multi-functional calculator platform
+* Secure server-side expression evaluation
+* Production-ready Django deployment
+* Responsive modern UI
+* Calculation history management
+* WhiteNoise static file optimization
+* Render cloud deployment
+* Clean and maintainable codebase
+
+---
+
+## 🛠️ Technologies Used
+
+### Backend
+
+* Python 3
+* Django 5.2
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+### Database
+
+* SQLite3
+
+### Production Tools
+
+* Gunicorn
+* WhiteNoise
+
+### Deployment
+
+* Render
+
+### Version Control
+
+* Git
+* GitHub
+
+---
+
+## 📂 Project Structure
+
+```text
+smart_calculator/
+│
+├── calculator/
+│   ├── migrations/
+│   ├── templates/
+│   ├── static/
+│   ├── views.py
+│   ├── urls.py
+│   └── models.py
+│
+├── smart_calculator/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── staticfiles/
+├── manage.py
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
-Open `http://127.0.0.1:8000/` in a browser.
+---
 
-> Django reads these values from the process environment. The `.env` file is provided as a reference and is intentionally excluded from Git; it is not loaded automatically.
+## ⚙️ Local Setup
 
-## Common Commands
+### Prerequisites
 
-```powershell
-# Run application checks and tests
-py manage.py check
-py manage.py test
+* Python 3.10+
+* Git
+* pip
 
-# Build production static files
-py manage.py collectstatic --noinput
-
-# Start the development server
-py manage.py runserver
-```
-
-## Push to GitHub
-
-Create an empty GitHub repository, replace the placeholder URL, and run:
-
-```powershell
-git init
-git add .
-git commit -m "Prepare SmartCalc Pro for deployment"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/smart_calculator.git
-git push -u origin main
-```
-
-## Deployment
-
-The application can be deployed to any Python host that supports a WSGI start command, such as Render or Railway.
-
-1. Push the repository to GitHub.
-2. Create a new web service from the repository.
-3. Use `pip install -r requirements.txt` as the build command.
-4. Use `python manage.py migrate && python manage.py collectstatic --noinput` as a pre-deploy command when the platform provides one.
-5. Use `gunicorn smart_calculator.wsgi:application` as the start command.
-6. Configure these environment variables on the hosting platform:
-   - `DEBUG=False`
-   - `SECRET_KEY=<a-long-random-production-secret>`
-   - `ALLOWED_HOSTS=<your-domain.example.com>`
-
-SQLite is suitable for local development. For a persistent production deployment, configure a managed database before relying on stored calculation history.
-
-The equivalent Linux deployment commands are:
+### Clone Repository
 
 ```bash
-python -m pip install -r requirements.txt
-python manage.py migrate
-python manage.py collectstatic --noinput
-python manage.py check --deploy
-gunicorn smart_calculator.wsgi:application --bind 0.0.0.0:${PORT:-8000}
+git clone https://github.com/aishwaryagangaraj-web/smart-calculator.git
+cd smart-calculator
 ```
 
-## Screenshots
+### Create Virtual Environment
 
-Add application screenshots to a `screenshots/` directory, then include them here:
+Windows
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
+Linux/Mac
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run Database Migrations
+
+```bash
+python manage.py migrate
+```
+
+### Start Development Server
+
+```bash
+python manage.py runserver
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+---
+
+## 📋 Common Commands
+
+### Run Development Server
+
+```bash
+python manage.py runserver
+```
+
+### Apply Migrations
+
+```bash
+python manage.py migrate
+```
+
+### Create New Migration
+
+```bash
+python manage.py makemigrations
+```
+
+### Run Tests
+
+```bash
+python manage.py test
+```
+
+### Collect Static Files
+
+```bash
+python manage.py collectstatic --noinput
+```
+
+### Check Project Configuration
+
+```bash
+python manage.py check
+```
+
+---
+
+## 🚀 Deployment (Render)
+
+### Build Command
+
+```bash
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+```
+
+### Start Command
+
+```bash
+gunicorn smart_calculator.wsgi:application
+```
+
+### Environment Variables
+
+```env
+DEBUG=False
+SECRET_KEY=your-secret-key
+ALLOWED_HOSTS=smart-calculator-g5th.onrender.com
+```
+
+---
+
+## 📸 Screenshots
+
+Add screenshots inside a screenshots folder.
+
+Example:
 
 ```markdown
-![SmartCalc Pro dashboard](screenshots/dashboard.png)
-![Calculator result](screenshots/calculator-result.png)
+![Home Page](screenshots/home.png)
+
+![Scientific Calculator](screenshots/scientific.png)
+
+![BMI Calculator](screenshots/bmi.png)
 ```
 
-## Author
+---
 
-**Aishwarya Gangaraj**  
-Email: [aishwaryagangaraj@gmail.com](mailto:aishwaryagangaraj@gmail.com)
+## 🎯 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+* Django Web Development
+* URL Routing
+* Django Templates
+* Static File Management
+* Form Handling
+* Production Deployment
+* Git & GitHub Workflow
+* Cloud Hosting with Render
+* Responsive Web Design
+* Python Backend Development
+
+---
+
+## 🔮 Future Enhancements
+
+* User Authentication
+* Dark Mode
+* Calculation Export (PDF)
+* Graph Plotting Calculator
+* Currency Converter
+* Unit Converter
+* Scientific Expression Parser
+* Calculation Analytics Dashboard
+
+---
+
+## 👩‍💻 Author
+
+### Aishwarya Gangaraj
+
+🎓 Computer Science Engineering (AI & ML)
+
+📧 Email:
+[aishwaryagangaraj@gmail.com](mailto:aishwaryagangaraj@gmail.com)
+
+💻 GitHub:
+https://github.com/aishwaryagangaraj-web
+
+🔗 LinkedIn:
+https://www.linkedin.com/in/aishwaryagangaraj
+
+---
+
+## ⭐ Support
+
+If you found this project useful, please consider giving it a ⭐ on GitHub.
+
+Your support helps improve and maintain the project.
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
